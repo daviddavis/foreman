@@ -13,10 +13,8 @@ module Api
 
       api :POST, "/config_templates/:config_template_id/template_combinations", "Add a Template Combination"
       param :config_template_id, :identifier, :required => true
-      param :template_combination, Hash, :required => true do
-        param :environment_id, :number, :allow_nil => true, :desc => "environment id"
-        param :hostgroup_id, :number, :allow_nil => true, :desc => "hostgroup id"
-      end
+      param :environment_id, :number, :allow_nil => true, :desc => "environment id"
+      param :hostgroup_id, :number, :allow_nil => true, :desc => "hostgroup id"
 
       def create
         @template_combination = @config_template.template_combinations.build(params[:template_combination])

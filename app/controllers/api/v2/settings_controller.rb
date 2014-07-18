@@ -22,9 +22,7 @@ module Api
 
       api :PUT, "/settings/:id/", "Update a setting."
       param :id, String, :required => true
-      param :setting, Hash, :required => true do
-        param :value, String
-      end
+      param :value, String, :required => true
 
       def update
         process_response (@setting.parse_string_value(params[:setting][:value]) && @setting.save)

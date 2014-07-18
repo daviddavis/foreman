@@ -34,18 +34,16 @@ module Api
 
       api :PUT, '/smart_class_parameters/:id', 'Update a smart class parameter.'
       param :id, :identifier, :required => true
-      param :smart_class_parameter, Hash, :required => true do
-        # can't update parameter/key name for :parameter, String, :required => true
-        param :override, :bool
-        param :description, String
-        param :default_value, String
-        param :path, String
-        param :validator_type, String
-        param :validator_rule, String
-        param :override_value_order, String
-        param :parameter_type, String
-        param :required, :bool
-      end
+      # can't update parameter/key name for :parameter, String, :required => true
+      param :override, :bool
+      param :description, String
+      param :default_value, String
+      param :path, String
+      param :validator_type, String
+      param :validator_rule, String
+      param :override_value_order, String
+      param :parameter_type, String
+      param :required, :bool
 
       def update
         #Note:  User must manually set :override => true. It is not automatically updated if optional input validator fields are updated.

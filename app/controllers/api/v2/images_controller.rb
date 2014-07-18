@@ -25,18 +25,15 @@ module Api
       end
 
       def_param_group :image do
-        param :image, Hash, :action_aware => true do
-          param :name, String, :required => true
-          param :username, String, :required => true
-          param :uuid, String, :required => true
-          param :compute_resource_id, :number, :required => true
-          param :architecture_id, :number, :required => true
-          param :operatingsystem_id, :number, :required => true
-        end
+        param :name, String, :required => true
+        param :username, String, :required => true
+        param :uuid, String, :required => true
+        param :compute_resource_id, :number, :required => true
+        param :architecture_id, :number, :required => true
+        param :operatingsystem_id, :number, :required => true
       end
 
       api :POST, "/compute_resources/:compute_resource_id/images/", "Create a image"
-      param :compute_resource_id, :identifier, :required => true
       param_group :image, :as => :create
 
       def create
@@ -45,7 +42,6 @@ module Api
       end
 
       api :PUT, "/compute_resources/:compute_resource_id/images/:id/", "Update a image."
-      param :compute_resource_id, :identifier, :required => true
       param :id, :identifier, :required => true
       param_group :image
 

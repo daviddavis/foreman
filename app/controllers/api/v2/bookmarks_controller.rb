@@ -18,12 +18,10 @@ module Api
       end
 
       def_param_group :bookmark do
-        param :bookmark, Hash, :action_aware => true do
-          param :name, String, :required => true
-          param :controller, String, :required => true
-          param :query, String, :required => true
-          param :public, :bool
-        end
+        param :name, String, :required => true
+        param :controller, String, :required => true
+        param :query, String, :required => true
+        param :public, :bool
       end
 
       api :POST, "/bookmarks/", "Create a bookmark."

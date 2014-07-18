@@ -27,20 +27,18 @@ module Api
       end
 
       def_param_group :hostgroup do
-        param :hostgroup, Hash, :action_aware => true do
-          param :name, String, :required => true
-          param :parent_id, :number
-          param :environment_id, :number
-          param :operatingsystem_id, :number
-          param :architecture_id, :number
-          param :medium_id, :number
-          param :ptable_id, :number
-          param :puppet_ca_proxy_id, :number
-          param :subnet_id, :number
-          param :domain_id, :number
-          param :realm_id, :number
-          param :puppet_proxy_id, :number
-        end
+        param :name, String, :required => true
+        param :parent_id, :number
+        param :environment_id, :number
+        param :operatingsystem_id, :number
+        param :architecture_id, :number
+        param :medium_id, :number
+        param :ptable_id, :number
+        param :puppet_ca_proxy_id, :number
+        param :subnet_id, :number
+        param :domain_id, :number
+        param :realm_id, :number
+        param :puppet_proxy_id, :number
       end
 
       api :POST, "/hostgroups/", "Create an hostgroup."
