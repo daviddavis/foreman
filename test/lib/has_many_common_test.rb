@@ -47,7 +47,6 @@ class HasManyCommonTest < ActiveSupport::TestCase
     assert_equal ["Common", "Parent/inherited", "db"], env.hostgroup_names.sort
   end
 
-
   ### belongs_to ###
   #
   # Test default AR extenstion *_name where method is :name by default

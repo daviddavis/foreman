@@ -50,7 +50,6 @@ class HostTest < ActionDispatch::IntegrationTest
     assert_equal original_interface_count + change, table.all('tr', :visible => true).count
   end
 
-
   test "index page" do
     assert_index_page(hosts_path,"Hosts","New Host")
   end
@@ -79,7 +78,6 @@ class HostTest < ActionDispatch::IntegrationTest
       assert page.has_link?("Additional Information", :href => "#info")
     end
 
-
     test "default primary interface is in the overview table" do
       assert_new_button(hosts_path, "New Host", new_host_path)
 
@@ -100,7 +98,6 @@ class HostTest < ActionDispatch::IntegrationTest
       assert table.find('td.flags .primary-flag.active')
       assert table.find('td.flags .provision-flag.active')
     end
-
 
     describe "NIC modal window" do
       setup { skip "Temporarily disabled until issue #9138 gets resolved" }
@@ -148,7 +145,6 @@ class HostTest < ActionDispatch::IntegrationTest
         end
 
       end
-
 
       describe "adding interfaces" do
 
@@ -216,7 +212,6 @@ class HostTest < ActionDispatch::IntegrationTest
 
       end
 
-
       describe "switching flags from the overview table" do
 
         test "switch primary" do
@@ -248,7 +243,6 @@ class HostTest < ActionDispatch::IntegrationTest
         end
 
       end
-
 
       describe "removing interfaces" do
 

@@ -9,5 +9,4 @@ class ConfigGroupClassTest < ActiveSupport::TestCase
                                 :config_group_id => config_group.id).valid?
   end
 
-
 end

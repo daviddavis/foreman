@@ -53,7 +53,6 @@ module Api
         process_response @compute_resource.save
       end
 
-
       api :PUT, "/compute_resources/:id/", N_("Update a compute resource")
       param :id, String, :required => true
       param_group :compute_resource

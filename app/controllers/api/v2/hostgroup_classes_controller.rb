@@ -13,7 +13,6 @@ module Api
         render :json =>  { root_node_name => HostgroupClass.where(:hostgroup_id => @hostgroup.id).pluck('puppetclass_id') }
       end
 
-
       api :POST, "/hostgroups/:hostgroup_id/puppetclass_ids", N_("Add a Puppet class to host group")
       param :hostgroup_id, String, :required => true, :desc => N_("ID of host group")
       param :puppetclass_id, String, :required => true, :desc => N_("ID of Puppet class")

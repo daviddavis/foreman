@@ -2,7 +2,6 @@ require 'test_helper'
 
 class Api::V1::StatisticsControllerTest < ActionController::TestCase
 
-
   test "should get statistics" do
     get :index, { }
     assert_response :success

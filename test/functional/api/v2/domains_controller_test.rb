@@ -2,7 +2,6 @@ require 'test_helper'
 
 class Api::V2::DomainsControllerTest < ActionController::TestCase
 
-
   test "should get index" do
     get :index, { }
     assert_response :success

@@ -2,7 +2,6 @@ require 'test_helper'
 
 class Api::V2::OperatingsystemsControllerTest < ActionController::TestCase
 
-
   os = {
     :name  => "awsome_os",
     :major => "1",

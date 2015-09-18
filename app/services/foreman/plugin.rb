@@ -97,7 +97,6 @@ module Foreman #:nodoc:
       @id = id.to_sym
     end
 
-
     def <=>(plugin)
       self.id.to_s <=> plugin.id.to_s
     end

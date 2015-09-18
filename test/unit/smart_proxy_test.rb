@@ -16,7 +16,6 @@ class SmartProxyTest < ActiveSupport::TestCase
     assert_equal proxy.url, "https://secure.proxy:4568"
   end
 
-
   def test_should_not_include_trailing_slash
     proxy = SmartProxy.new
     proxy.name = "test a proxy"

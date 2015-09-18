@@ -31,7 +31,6 @@ module Api
       not_found
     }
 
-
     def get_resource
       instance_variable_get :"@#{resource_name}" or raise 'no resource loaded'
     end

@@ -64,7 +64,6 @@ module Api
         %w(operatingsystem_id config_template_id)
       end
 
-
     end
   end
 end

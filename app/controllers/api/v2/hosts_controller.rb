@@ -73,7 +73,6 @@ module Api
         end
       end
 
-
       api :POST, "/hosts/", N_("Create a host")
       param_group :host, :as => :create
 

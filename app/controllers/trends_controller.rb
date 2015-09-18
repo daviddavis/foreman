@@ -34,7 +34,6 @@ class TrendsController < ApplicationController
   def edit
   end
 
-
   def destroy
     if @trend.destroy
       process_success

@@ -169,7 +169,6 @@ class SettingTest < ActiveSupport::TestCase
     check_properties_saved_and_loaded_ok :name => "foo", :value => "  value  ", :default => "default", :description => "test foo"
   end
 
-
   # tests for choosing correct type
   def test_should_autoselect_correct_type_for_integer_value
     check_correct_type_for "integer", 5
@@ -192,7 +191,6 @@ class SettingTest < ActiveSupport::TestCase
     check_correct_type_for "boolean", false
   end
 
-
   # tests for caching
   def test_returns_value_from_cache
     check_value_returns_from_cache_with :name => "test_cache", :default => 1, :value => 2, :description => "test foo"
@@ -206,7 +204,6 @@ class SettingTest < ActiveSupport::TestCase
     check_value_returns_from_cache_with :name => "test_cache", :default => true, :value => true, :description => "test foo"
   end
 
-
   # tests for default type constraints
   test "arrays cannot be empty by default" do
     check_setting_did_not_save_with :name => "foo", :value => [], :default => ["a", "b", "c"], :description => "test foo"
@@ -219,7 +216,6 @@ class SettingTest < ActiveSupport::TestCase
   test "integer attributes can be zero by default" do
     check_properties_saved_and_loaded_ok :name => "foo83", :value => 0, :default => 0, :description => "test foo"
   end
-
 
   # test particular settings
   test "idle_timeout should not be zero" do
@@ -382,8 +378,8 @@ class SettingTest < ActiveSupport::TestCase
   end
 
   def check_setting_did_not_save_with(options = {})
-     setting = Setting.new(options)
-     assert !setting.save
+    setting = Setting.new(options)
+    assert !setting.save
   end
 
   def check_value_returns_from_cache_with(options = {})

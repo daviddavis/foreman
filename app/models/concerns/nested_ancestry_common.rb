@@ -118,7 +118,6 @@ module NestedAncestryCommon
       # the parent title + "/" is added to the name to create the title
       length_of_matcher += parent.title.length + 1 if parent.present?
 
-
       max_length_for_name = 255 - length_of_matcher
       current_title_length = max_length_for_name - name.length
 

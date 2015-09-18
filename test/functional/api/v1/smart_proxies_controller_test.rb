@@ -115,7 +115,6 @@ class Api::V1::SmartProxiesControllerTest < ActionController::TestCase
     ProxyAPI::Puppet.any_instance.stubs(:classes).returns(classes)
   end
 
-
   # puppetmaster proxy - import_puppetclasses tests
 
   test "should import new environments" do

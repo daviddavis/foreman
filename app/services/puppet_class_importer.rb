@@ -124,7 +124,6 @@ class PuppetClassImporter
     updated
   end
 
-
   def db_environments
     @foreman_envs ||= (Environment.all.map(&:name) - ignored_environments)
   end

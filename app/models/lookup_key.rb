@@ -202,7 +202,6 @@ class LookupKey < ActiveRecord::Base
     end.join("\n")
   end
 
-
   def validate_and_cast_default_value
     return true if default_value.nil? || contains_erb?(default_value)
     begin

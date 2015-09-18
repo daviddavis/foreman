@@ -2,7 +2,6 @@ require 'test_helper'
 
 class Api::V1::OperatingsystemsControllerTest < ActionController::TestCase
 
-
   os = {
     :name  => "awsome_os",
     :major => "1",
@@ -31,7 +30,6 @@ class Api::V1::OperatingsystemsControllerTest < ActionController::TestCase
     assert_response :success
     assert_not_nil assigns(:operatingsystem)
   end
-
 
   test "should not create os without version" do
     assert_difference('Operatingsystem.count', 0) do

@@ -8,7 +8,6 @@ class Api::V2::LocationsControllerTest < ActionController::TestCase
     Rabl.configuration.use_controller_name_as_json_root = false
   end
 
-
   test "should get index" do
     get :index, { }
     assert_response :success

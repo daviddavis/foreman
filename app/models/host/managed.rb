@@ -178,7 +178,6 @@ class Host::Managed < Host::Base
     self.name <=> other.name
   end
 
-
   # method to return the correct owner list for host edit owner select dropbox
   def is_owned_by
     owner.id_and_type if owner
@@ -735,7 +734,6 @@ class Host::Managed < Host::Base
       raise ::Foreman::Exception.new(N_("Unknown power management support - can't continue"))
     end
   end
-
 
   def ipmi_boot(booting_device)
     bmc_proxy.boot({:function => 'bootdevice', :device => booting_device})

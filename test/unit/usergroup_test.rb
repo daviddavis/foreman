@@ -243,5 +243,4 @@ class UsergroupTest < ActiveSupport::TestCase
 
   end
 
-
 end

@@ -8,7 +8,6 @@ class FactValueTest < ActionDispatch::IntegrationTest
                        :fact_name => FactoryGirl.create(:fact_name, :name => 'kernelversion'))
   end
 
-
   test "index page" do
     assert_index_page(fact_values_path,"Fact Values",nil,true)
   end

@@ -124,7 +124,7 @@ class HostsControllerTest < ActionController::TestCase
     end
 
     teardown do
-     Host::Managed.any_instance.unstub(:setBuild)
+      Host::Managed.any_instance.unstub(:setBuild)
       @request.env['HTTP_REFERER'] = ''
     end
 
@@ -289,7 +289,6 @@ class HostsControllerTest < ActionController::TestCase
     hosts.each { |host| assert_equal hostgroup, host.hostgroup }
   end
 
-
   test 'multiple hostgroup change by host names' do
     @request.env['HTTP_REFERER'] = hosts_path
     hosts = FactoryGirl.create_list(:host, 2)
@@ -311,7 +310,6 @@ class HostsControllerTest < ActionController::TestCase
       assert_equal host.hostgroup, hostgroup
     end
   end
-
 
   def setup_multiple_environments
     setup_user_and_host "edit"

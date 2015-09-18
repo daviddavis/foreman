@@ -69,7 +69,6 @@ module LayoutHelper
     end
   end
 
-
   def multiple_checkboxes(f, attr, klass, associations, options = {}, html_options = {})
     if associations.count > 5
       associated_obj = klass.send(ActiveModel::Naming.plural(associations.first))

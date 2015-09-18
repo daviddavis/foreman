@@ -2,7 +2,6 @@ require 'test_helper'
 
 class Api::V1::BookmarksControllerTest < ActionController::TestCase
 
-
   bookmark_base = {
     :public     => false,
     :controller => "hosts"
@@ -17,7 +16,6 @@ class Api::V1::BookmarksControllerTest < ActionController::TestCase
                                        :name  => "facts.architecture",
                                        :query => " facts.architecture = x86_64"
                                      })
-
 
   test "should get index" do
     get :index, { }

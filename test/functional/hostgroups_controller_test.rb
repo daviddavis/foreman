@@ -112,5 +112,4 @@ class HostgroupsControllerTest < ActionController::TestCase
     assert_equal 'hostgroup=Parent/new_child', lookup_values(:six).match
   end
 
-
 end

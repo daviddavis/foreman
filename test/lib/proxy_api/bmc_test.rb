@@ -244,7 +244,4 @@ class ProxyApiBmcTest < ActiveSupport::TestCase
     @testbmc.lan_mac(@options)
   end
 
-
-
-
 end

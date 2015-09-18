@@ -249,5 +249,4 @@ class Subnet < ActiveRecord::Base
     @enc_attributes ||= %w(name network mask gateway dns_primary dns_secondary from to boot_mode ipam)
   end
 
-
 end

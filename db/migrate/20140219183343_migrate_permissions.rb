@@ -296,7 +296,6 @@ class MigratePermissions < ActiveRecord::Migration
     clone.save!
   end
 
-
   # To detect whether migration is needed we use existing models
   # fakes would always indicate that migration is needed
   def self.old_permissions_present

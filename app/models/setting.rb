@@ -103,7 +103,6 @@ class Setting < ActiveRecord::Base
   end
   alias_method :default_before_type_cast, :default
 
-
   def parse_string_value(val)
     case settings_type
     when "boolean"
