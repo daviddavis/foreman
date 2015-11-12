@@ -66,7 +66,7 @@ module Api
       end
 
       def metadata_order
-        @order ||=  params[:order].present? && (order_array = params[:order].split(' ')).any? ? (order_array[1] || 'ASC') : nil
+        @order ||= params[:order].present? && (order_array = params[:order].split(' ')).any? ? (order_array[1] || 'ASC') : nil
       end
 
       def metadata_by
