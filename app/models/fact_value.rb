@@ -17,10 +17,10 @@ class FactValue < ActiveRecord::Base
   scoped_search :in => :fact_name, :on => :short_name, :complete_value => true, :alias => "fact_short_name"
 
   scope :no_timestamp_facts, lambda {
-    eager_load(:fact_name).where("fact_names.name <> ?",:_timestamp)
+    eager_load(:fact_name).where("fact_names.name <> ?", :_timestamp)
   }
   scope :timestamp_facts, lambda {
-    eager_load(:fact_name).where("fact_names.name = ?",:_timestamp)
+    eager_load(:fact_name).where("fact_names.name = ?", :_timestamp)
   }
   scope :my_facts, lambda {
     if !User.current.admin? || Organization.expand(Organization.current).present? || Location.expand(Location.current).present?
@@ -69,7 +69,7 @@ class FactValue < ActiveRecord::Base
   # returns the sum of each value, e.g. how many machines with 2,4...n cpu's
   def self.count_each(fact, options = {})
     output = []
-    where({:fact_names => {:name => fact}}).joins(:fact_name).group(:value).count.each do |k,v|
+    where({:fact_names => {:name => fact}}).joins(:fact_name).group(:value).count.each do |k, v|
       label = case options[:unit]
                 when String
                   _(options[:unit]) % k
@@ -104,14 +104,14 @@ class FactValue < ActiveRecord::Base
 
   def self.search_cast_facts(key, operator, value)
     {
-      :conditions => "fact_names.name = '#{key.split('.')[1]}' AND #{cast_facts(key,operator,value)}",
-      :include    => :fact_name,
+      :conditions => "fact_names.name = '#{key.split('.')[1]}' AND #{cast_facts(key, operator, value)}",
+      :include    => :fact_name
     }
   end
 
   def self.search_value_cast_facts(key, operator, value)
     {
-      :conditions => cast_facts(key,operator,value)
+      :conditions => cast_facts(key, operator, value)
     }
   end
 end

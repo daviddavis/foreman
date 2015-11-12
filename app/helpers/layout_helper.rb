@@ -9,7 +9,7 @@ module LayoutHelper
   end
 
   def button_group(*elements)
-    content_tag(:div,:class=>"btn-group") { elements.join(" ").html_safe }
+    content_tag(:div, :class=>"btn-group") { elements.join(" ").html_safe }
   end
 
   def search_bar(*elements)
@@ -55,7 +55,7 @@ module LayoutHelper
     options[:class] ||= 'btn btn-default'
     content_tag :span, class: 'input-group-btn' do
       content_tag :button, content, options  do
-        content_tag :span,content, :class => glyph
+        content_tag :span, content, :class => glyph
       end
     end
   end
@@ -407,7 +407,7 @@ module LayoutHelper
   end
 
   def icon_text(i, text = "", opts = {})
-    (content_tag(:i,"", :class=>"glyphicon glyphicon-#{i} #{opts[:class]}", :title => opts[:title]) + " " + text).html_safe
+    (content_tag(:i, "", :class=>"glyphicon glyphicon-#{i} #{opts[:class]}", :title => opts[:title]) + " " + text).html_safe
   end
 
   def alert(opts = {})

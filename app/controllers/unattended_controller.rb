@@ -4,7 +4,7 @@ class UnattendedController < ApplicationController
   layout false
 
   # Methods which return configuration files for syslinux(pxe), pxegrub or g/ipxe
-  PXE_CONFIG_URLS = TemplateKind.where("name LIKE ?","PXELinux").map(&:name)
+  PXE_CONFIG_URLS = TemplateKind.where("name LIKE ?", "PXELinux").map(&:name)
   PXEGRUB_CONFIG_URLS = TemplateKind.where("name LIKE ?", "PXEGrub").map(&:name)
   IPXE_CONFIG_URLS = TemplateKind.where("name LIKE ?", "iPXE").map(&:name) + ['gPXE']
   CONFIG_URLS = PXE_CONFIG_URLS + IPXE_CONFIG_URLS + PXEGRUB_CONFIG_URLS

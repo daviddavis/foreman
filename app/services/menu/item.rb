@@ -28,7 +28,7 @@ module Menu
 
     def url_hash
       @url_hash ||= @context.routes.url_helpers.send("hash_for_#{name}_path")
-      @url_hash.inject({}) do |h,(key,value)|
+      @url_hash.inject({}) do |h, (key, value)|
         h[key] = (value.respond_to?(:call) ? value.call : value)
         h
       end

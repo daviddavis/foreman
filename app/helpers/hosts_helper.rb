@@ -186,7 +186,7 @@ module HostsHelper
   end
 
   def resources_chart(timerange = 1.day.ago)
-    applied, failed, restarted, failed_restarts, skipped = [],[],[],[],[]
+    applied, failed, restarted, failed_restarts, skipped = [], [], [], [], []
     @host.reports.recent(timerange).each do |r|
       applied         << [r.reported_at.to_i*1000, r.applied ]
       failed          << [r.reported_at.to_i*1000, r.failed ]
@@ -194,11 +194,11 @@ module HostsHelper
       failed_restarts << [r.reported_at.to_i*1000, r.failed_restarts ]
       skipped         << [r.reported_at.to_i*1000, r.skipped ]
     end
-    [{:label=>_("Applied"), :data=>applied,:color =>'#89A54E'},
-     {:label=>_("Failed"), :data=>failed,:color =>'#AA4643'},
-     {:label=>_("Failed restarts"), :data=>failed_restarts,:color =>'#AA4643'},
-     {:label=>_("Skipped"), :data=>skipped,:color =>'#80699B'},
-     {:label=>_("Restarted"), :data=>restarted,:color =>'#4572A7'}]
+    [{:label=>_("Applied"), :data=>applied, :color =>'#89A54E'},
+     {:label=>_("Failed"), :data=>failed, :color =>'#AA4643'},
+     {:label=>_("Failed restarts"), :data=>failed_restarts, :color =>'#AA4643'},
+     {:label=>_("Skipped"), :data=>skipped, :color =>'#80699B'},
+     {:label=>_("Restarted"), :data=>restarted, :color =>'#4572A7'}]
   end
 
   def runtime_chart(timerange = 1.day.ago)
@@ -207,7 +207,7 @@ module HostsHelper
       config  << [r.reported_at.to_i*1000, r.config_retrieval]
       runtime << [r.reported_at.to_i*1000, r.runtime]
     end
-    [{:label=>_("Config Retrieval"), :data=> config, :color=>'#AA4643'},{:label=>_("Runtime"), :data=> runtime,:color=>'#4572A7'}]
+    [{:label=>_("Config Retrieval"), :data=> config, :color=>'#AA4643'}, {:label=>_("Runtime"), :data=> runtime, :color=>'#4572A7'}]
   end
 
   def reports_show
@@ -279,7 +279,7 @@ module HostsHelper
       [_("Puppet Environment"), (link_to(host.environment, hosts_path(:search => "environment = #{host.environment}")) if host.environment)],
       [_("Host Architecture"), (link_to(host.arch, hosts_path(:search => "architecture = #{host.arch}")) if host.arch)],
       [_("Operating System"), (link_to(host.operatingsystem.to_label, hosts_path(:search => "os_description = #{host.operatingsystem.description}")) if host.operatingsystem)],
-      [_("Host group"), (link_to(host.hostgroup, hosts_path(:search => %{hostgroup_title = "#{host.hostgroup}"})) if host.hostgroup)],
+      [_("Host group"), (link_to(host.hostgroup, hosts_path(:search => %{hostgroup_title = "#{host.hostgroup}"})) if host.hostgroup)]
     ]
     fields += [[_("Location"), (link_to(host.location.title, hosts_path(:search => "location = #{host.location}")) if host.location)]] if SETTINGS[:locations_enabled]
     fields += [[_("Organization"), (link_to(host.organization.title, hosts_path(:search => "organization = #{host.organization}")) if host.organization)]] if SETTINGS[:organizations_enabled]

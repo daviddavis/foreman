@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ComputeResourceIntegrationTest < ActionDispatch::IntegrationTest
   test "index page" do
-    assert_index_page(compute_resources_path,"Compute Resources","New Compute Resource")
+    assert_index_page(compute_resources_path, "Compute Resources", "New Compute Resource")
   end
 
   test "edit compute resource" do
@@ -20,6 +20,6 @@ class ComputeResourceIntegrationTest < ActionDispatch::IntegrationTest
     click_link "Edit"
     fill_in "compute_resource_password", :disabled => true, :with => "123456"
     click_link "Load Datacenters"
-    assert_equal "123456", find_field("compute_resource_password",:disabled => true).value
+    assert_equal "123456", find_field("compute_resource_password", :disabled => true).value
   end
 end

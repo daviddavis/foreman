@@ -7,7 +7,7 @@ class DomainTest < ActiveSupport::TestCase
     @new_domain = Domain.new
     @domain = domains(:mydomain)
     Domain.all.each do |d| #because we load from fixtures, counters aren't updated
-      Domain.reset_counters(d.id,:hostgroups)
+      Domain.reset_counters(d.id, :hostgroups)
     end
   end
 

@@ -4,7 +4,7 @@ FactoryGirl.define do
     sequence(:major) { |n| n }
 
     trait :with_os_defaults do
-      after(:create) do |os,evaluator|
+      after(:create) do |os, evaluator|
         os.provisioning_templates.each do |tmpl|
           FactoryGirl.create(:os_default_template,
                              :operatingsystem => os,

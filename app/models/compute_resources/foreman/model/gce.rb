@@ -81,7 +81,7 @@ module Foreman::Model
           args[:volumes].first[:source_image] = client.images.select { |i| i.id == args[:image_id] }.first.name
         end
         args[:disks] = []
-        args[:volumes].each_with_index do |vol_args,i|
+        args[:volumes].each_with_index do |vol_args, i|
           args[:disks] << new_volume(vol_args.merge(:name => "#{args[:name]}-disk#{i+1}"))
         end
       end
@@ -142,7 +142,7 @@ module Foreman::Model
     def new_volume(attrs = { })
       args = {
         :size_gb   => (attrs[:size_gb] || 10).to_i,
-        :zone_name => zone,
+        :zone_name => zone
       }.merge(attrs)
       client.disks.new(args)
     end
@@ -167,7 +167,7 @@ module Foreman::Model
       super.merge(
         :zone => zone,
         :name => "foreman-#{Time.now.to_i}",
-        :disks => [new_volume],
+        :disks => [new_volume]
       )
     end
   end

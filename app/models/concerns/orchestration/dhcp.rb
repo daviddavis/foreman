@@ -92,7 +92,7 @@ module Orchestration::DHCP
       :ip => ip,
       :mac => mac,
       :proxy => subnet.dhcp_proxy,
-      :network => subnet.network,
+      :network => subnet.network
     }
 
     if provision?

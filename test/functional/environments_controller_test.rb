@@ -171,7 +171,7 @@ class EnvironmentsControllerTest < ActionController::TestCase
     #db_tree   of {"env1" => ["a", "b", "c"], "env3" => []}
     #disk_tree of {"env1" => ["a", "b", "c"], "env2" => ["a", "b", "c"]}
 
-    PuppetClassImporter.any_instance.stubs(:ignored_environments).returns(["env1","env2","env3"])
+    PuppetClassImporter.any_instance.stubs(:ignored_environments).returns(["env1", "env2", "env3"])
     get :import_environments, {:proxy => smart_proxies(:puppetmaster)}, set_session_user
 
     assert_equal "No changes to your environments detected", flash[:notice]

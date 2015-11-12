@@ -2,11 +2,11 @@ require 'test_helper'
 
 class SubnetIntegrationTest < ActionDispatch::IntegrationTest
   test "index page" do
-    assert_index_page(subnets_path,"Subnets","New Subnet")
+    assert_index_page(subnets_path, "Subnets", "New Subnet")
   end
 
   test "create new page" do
-    assert_new_button(subnets_path,"New Subnet",new_subnet_path)
+    assert_new_button(subnets_path, "New Subnet", new_subnet_path)
     fill_in "subnet_name", :with => "home-office"
     fill_in "subnet_network", :with => "10.0.0.77"
     fill_in "subnet_mask", :with => "255.255.255.0"

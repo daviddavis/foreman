@@ -101,7 +101,7 @@ FactoryGirl.define do
 
     # This allows a test to declare build/create(:host, :ip => '1.2.3.4') and
     # have the primary interface correctly updated with the specified attrs
-    after(:build) do |host,evaluator|
+    after(:build) do |host, evaluator|
       unless host.primary_interface.present?
         opts = {
           :primary => true,
@@ -135,7 +135,7 @@ FactoryGirl.define do
     end
 
     trait :with_parameter do
-      after(:create) do |host,evaluator|
+      after(:create) do |host, evaluator|
         FactoryGirl.create(:host_parameter, :host => host)
       end
     end
@@ -144,7 +144,7 @@ FactoryGirl.define do
       transient do
         fact_count 20
       end
-      after(:create) do |host,evaluator|
+      after(:create) do |host, evaluator|
         evaluator.fact_count.times do
           FactoryGirl.create(:fact_value, :host => host)
         end
@@ -155,7 +155,7 @@ FactoryGirl.define do
       transient do
         report_count 5
       end
-      after(:create) do |host,evaluator|
+      after(:create) do |host, evaluator|
         evaluator.report_count.times do
           FactoryGirl.create(:report, :host => host)
         end
@@ -298,7 +298,7 @@ FactoryGirl.define do
     end
 
     trait :with_parameter do
-      after(:create) do |hg,evaluator|
+      after(:create) do |hg, evaluator|
         FactoryGirl.create(:hostgroup_parameter, :hostgroup => hg)
       end
     end

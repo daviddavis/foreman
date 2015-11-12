@@ -7,7 +7,7 @@ class FactName < ActiveRecord::Base
   has_many :fact_values, :dependent => :destroy
   has_many_hosts :through => :fact_values
 
-  scope :no_timestamp_fact, -> { where("fact_names.name <> ?",:_timestamp) }
+  scope :no_timestamp_fact, -> { where("fact_names.name <> ?", :_timestamp) }
   scope :timestamp_facts, -> { where(:name => :_timestamp) }
   scope :with_parent_id, lambda { |find_ids|
     conds, binds = [], []

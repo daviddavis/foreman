@@ -48,7 +48,7 @@ class InterfaceMergeTest < ActiveSupport::TestCase
 
   test "it does not overwrite compute attributes already set" do
     interfaces = [
-      FactoryGirl.build(:nic_managed, :identifier => 'eth0', :compute_attributes => {'attr' => 9}),
+      FactoryGirl.build(:nic_managed, :identifier => 'eth0', :compute_attributes => {'attr' => 9})
     ]
     @merge.run(interfaces, @attributes)
 

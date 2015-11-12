@@ -322,7 +322,7 @@ class User < ActiveRecord::Base
     return true if admin?
     if action.is_a? Hash
       # normalize controller name
-      action[:controller] = action[:controller].to_s.gsub(/::/, "_").sub(/^\//,'').underscore
+      action[:controller] = action[:controller].to_s.gsub(/::/, "_").sub(/^\//, '').underscore
       return true if editing_self?(action)
     end
     cached_roles.detect {|role| role.allowed_to?(action)}.present?

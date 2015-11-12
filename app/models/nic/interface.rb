@@ -92,7 +92,7 @@ module Nic
     # this is done to ensure compatibility with puppet storeconfigs
     def normalize_name
       # Remove whitespace
-      self.name.gsub!(/\s/,'') if self.name
+      self.name.gsub!(/\s/, '') if self.name
       # no hostname was given or a domain was selected, since this is before validation we need to ignore
       # it and let the validations to produce an error
       return if name.empty?

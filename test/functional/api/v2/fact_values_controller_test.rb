@@ -3,7 +3,7 @@ require 'test_helper'
 class Api::V2::FactValuesControllerTest < ActionController::TestCase
   def setup
     @host = FactoryGirl.create(:host)
-    FactoryGirl.create(:fact_value, :value => '2.6.9',:host => @host,
+    FactoryGirl.create(:fact_value, :value => '2.6.9', :host => @host,
                        :fact_name => FactoryGirl.create(:fact_name, :name => 'kernelversion'))
   end
 

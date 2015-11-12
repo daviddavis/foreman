@@ -4,8 +4,8 @@ class ArchitectureTest < ActiveSupport::TestCase
   setup do
     User.current = users :admin
     Architecture.all.each do |a| #because we load from fixtures, counters aren't updated
-      Architecture.reset_counters(a.id,:hosts)
-      Architecture.reset_counters(a.id,:hostgroups)
+      Architecture.reset_counters(a.id, :hosts)
+      Architecture.reset_counters(a.id, :hostgroups)
     end
   end
 

@@ -58,7 +58,7 @@ class HostIntegrationTest < ActionDispatch::IntegrationTest
   end
 
   test "index page" do
-    assert_index_page(hosts_path,"Hosts","New Host")
+    assert_index_page(hosts_path, "Hosts", "New Host")
   end
 
   test "show page" do
@@ -76,7 +76,7 @@ class HostIntegrationTest < ActionDispatch::IntegrationTest
 
   describe "create new host page" do
     test "tabs are present" do
-      assert_new_button(hosts_path,"New Host",new_host_path)
+      assert_new_button(hosts_path, "New Host", new_host_path)
       assert page.has_link?("Host", :href => "#primary")
       assert page.has_link?("Interfaces", :href => "#network")
       assert page.has_link?("Operating System", :href => "#os")

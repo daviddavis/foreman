@@ -52,7 +52,7 @@ module Foreman::Controller::TaxonomiesController
     @taxonomy = taxonomy_class.new(params[taxonomy_single.to_sym])
     if @taxonomy.save
       if @count_nil_hosts > 0
-        redirect_to send("step2_#{taxonomy_single}_path",@taxonomy)
+        redirect_to send("step2_#{taxonomy_single}_path", @taxonomy)
       else
         process_success(:object => @taxonomy)
       end
@@ -135,7 +135,7 @@ module Foreman::Controller::TaxonomiesController
 
   def assign_hosts
     @taxonomy_type = taxonomy_single.classify
-    @hosts = Host.authorized(:view_hosts, Host).send("no_#{taxonomy_single}").includes(included_associations).search_for(params[:search],:order => params[:order]).paginate(:page => params[:page])
+    @hosts = Host.authorized(:view_hosts, Host).send("no_#{taxonomy_single}").includes(included_associations).search_for(params[:search], :order => params[:order]).paginate(:page => params[:page])
     render "hosts/assign_hosts"
   end
 

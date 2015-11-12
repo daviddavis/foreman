@@ -58,13 +58,13 @@ module DashboardHelper
   end
 
   def render_overview(report, options = {})
-    data = [{:label=>_('Active'), :data => report[:active_hosts_ok_enabled],:color => report_color[:active_hosts_ok_enabled]},
+    data = [{:label=>_('Active'), :data => report[:active_hosts_ok_enabled], :color => report_color[:active_hosts_ok_enabled]},
             {:label=>_('Error'), :data =>report[:bad_hosts_enabled], :color => report_color[:bad_hosts_enabled]},
-            {:label=>_('OK'), :data =>report[:ok_hosts_enabled],:color => report_color[:ok_hosts_enabled]},
-            {:label=>_('Pending changes'), :data =>report[:pending_hosts_enabled],:color => report_color[:pending_hosts_enabled]},
-            {:label=>_('Out of sync'), :data =>report[:out_of_sync_hosts_enabled],:color => report_color[:out_of_sync_hosts_enabled]},
-            {:label=>_('No report'), :data =>report[:reports_missing],:color => report_color[:reports_missing]},
-            {:label=>_('Notification disabled'), :data =>report[:disabled_hosts],:color => report_color[:disabled_hosts]}]
+            {:label=>_('OK'), :data =>report[:ok_hosts_enabled], :color => report_color[:ok_hosts_enabled]},
+            {:label=>_('Pending changes'), :data =>report[:pending_hosts_enabled], :color => report_color[:pending_hosts_enabled]},
+            {:label=>_('Out of sync'), :data =>report[:out_of_sync_hosts_enabled], :color => report_color[:out_of_sync_hosts_enabled]},
+            {:label=>_('No report'), :data =>report[:reports_missing], :color => report_color[:reports_missing]},
+            {:label=>_('Notification disabled'), :data =>report[:disabled_hosts], :color => report_color[:disabled_hosts]}]
     flot_pie_chart 'overview', _('Host Configuration Status'), data, options.merge(:search => "search_by_legend")
   end
 
@@ -78,8 +78,8 @@ module DashboardHelper
     content_tag :li do
       content_tag(:i, raw('&nbsp;'), :class=>'label', :style => "background-color:" + report_color[counter]) +
       raw('&nbsp;')+
-      link_to(name, hosts_path(:search => search),:class=>"dashboard-links") +
-      content_tag(:h4,@report[counter])
+      link_to(name, hosts_path(:search => search), :class=>"dashboard-links") +
+      content_tag(:h4, @report[counter])
     end
   end
 

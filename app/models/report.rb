@@ -47,7 +47,7 @@ class Report < ActiveRecord::Base
 
   # serialize metrics as YAML
   def metrics=(m)
-    write_attribute(:metrics,m.to_yaml) unless m.nil?
+    write_attribute(:metrics, m.to_yaml) unless m.nil?
   end
 
   def to_label

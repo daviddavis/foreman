@@ -94,7 +94,7 @@ class LookupKey < ActiveRecord::Base
 
   def path=(v)
     return unless v
-    using_default = v.tr("\r","") == array2path(Setting["Default_variables_Lookup_Path"])
+    using_default = v.tr("\r", "") == array2path(Setting["Default_variables_Lookup_Path"])
     write_attribute(:path, using_default ? nil : v)
   end
 
@@ -157,7 +157,7 @@ class LookupKey < ActiveRecord::Base
     path_elements.each do |rule|
       match = []
       rule.each do |element|
-        match << "#{element}#{EQ_DELM}#{attr_to_value(host,element)}"
+        match << "#{element}#{EQ_DELM}#{attr_to_value(host, element)}"
       end
       matches << match.join(KEY_DELM)
     end
@@ -178,7 +178,7 @@ class LookupKey < ActiveRecord::Base
   end
 
   def sanitize_path
-    self.path = path.tr("\s","").downcase unless path.blank?
+    self.path = path.tr("\s", "").downcase unless path.blank?
   end
 
   def array2path(array)

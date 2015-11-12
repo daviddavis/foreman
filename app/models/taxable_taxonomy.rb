@@ -8,7 +8,7 @@ class TaxableTaxonomy < ActiveRecord::Base
     if types.empty?
       {}
     else
-      where(["taxable_taxonomies.taxable_type NOT IN (?)",types])
+      where(["taxable_taxonomies.taxable_type NOT IN (?)", types])
     end
   }
 end

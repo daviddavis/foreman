@@ -137,7 +137,7 @@ class LookupValueTest < ActiveSupport::TestCase
   test "shuld not cast string with erb" do
     key = FactoryGirl.create(:puppetclass_lookup_key, :as_smart_class_param,
                             :override => true, :key_type => 'array', :merge_overrides => true, :avoid_duplicates => true,
-                            :default_value => [1,2,3], :puppetclass => puppetclasses(:one))
+                            :default_value => [1, 2, 3], :puppetclass => puppetclasses(:one))
 
     lv = LookupValue.new(:value => "<%= [4,5,6] %>", :match => "hostgroup=Common", :lookup_key => key)
     # does not cast on save (validate_and_cast_value)

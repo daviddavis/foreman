@@ -14,7 +14,7 @@ class Debian < Operatingsystem
   end
 
   def boot_files_uri(medium, architecture, host = nil)
-    super(medium, architecture, host).each{ |img_uri| img_uri.path = img_uri.path.gsub('x86_64','amd64') }
+    super(medium, architecture, host).each{ |img_uri| img_uri.path = img_uri.path.gsub('x86_64', 'amd64') }
   end
 
   def pxe_type
@@ -33,8 +33,8 @@ class Debian < Operatingsystem
   def self.shorten_description(description)
     return "" if description.blank?
     s=description
-    s.gsub!('GNU/Linux','')
-    s.gsub!(/\(.+?\)/,'')
+    s.gsub!('GNU/Linux', '')
+    s.gsub!(/\(.+?\)/, '')
     s.squeeze! " "
     s.strip!
     s.blank? ? description : s

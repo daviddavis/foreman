@@ -79,7 +79,7 @@ class Puppetclass < ActiveRecord::Base
 
   # returns class name (excluding of the module name)
   def klass
-    name.gsub(module_name+"::","")
+    name.gsub(module_name+"::", "")
   end
 
   # return host ids from config groups by type

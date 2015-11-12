@@ -324,11 +324,6 @@ Style/SingleLineMethods:
 Style/SingleSpaceBeforeFirstArg:
   Enabled: false
 
-# Offense count: 418
-# Cop supports --auto-correct.
-Style/SpaceAfterComma:
-  Enabled: false
-
 # Offense count: 751
 # Cop supports --auto-correct.
 Style/SpaceAroundOperators:
@@ -394,12 +389,6 @@ Style/SymbolProc:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/TrailingBlankLines:
-  Enabled: false
-
-# Offense count: 27
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleForMultiline, SupportedStyles.
-Style/TrailingComma:
   Enabled: false
 
 # Offense count: 7

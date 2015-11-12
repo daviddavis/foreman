@@ -14,7 +14,7 @@ class ComputeResource < ActiveRecord::Base
     'Vmware'    => 'Foreman::Model::Vmware',
     'Openstack' => 'Foreman::Model::Openstack',
     'Rackspace' => 'Foreman::Model::Rackspace',
-    'GCE'       => 'Foreman::Model::GCE',
+    'GCE'       => 'Foreman::Model::GCE'
   }
 
   validates_lengths_from_database
@@ -56,7 +56,7 @@ class ComputeResource < ActiveRecord::Base
   end
 
   def self.providers
-    supported_providers.reject { |p,c| !SETTINGS[p.downcase.to_sym] }.keys
+    supported_providers.reject { |p, c| !SETTINGS[p.downcase.to_sym] }.keys
   end
 
   def self.provider_class(name)
@@ -178,11 +178,11 @@ class ComputeResource < ActiveRecord::Base
   def templates(opts = {})
   end
 
-  def template(id,opts = {})
+  def template(id, opts = {})
   end
 
   def update_required?(old_attrs, new_attrs)
-    old_attrs.merge(new_attrs) do |k,old_v,new_v|
+    old_attrs.merge(new_attrs) do |k, old_v, new_v|
       update_required?(old_v, new_v) if old_v.is_a?(Hash)
       return true unless old_v == new_v
       new_v
@@ -262,7 +262,7 @@ class ComputeResource < ActiveRecord::Base
   def vm_compute_attributes_for(uuid)
     vm = find_vm_by_uuid(uuid)
     vm_attrs = vm.attributes rescue {}
-    vm_attrs = vm_attrs.reject{|k,v| k == :id }
+    vm_attrs = vm_attrs.reject{|k, v| k == :id }
 
     if vm.respond_to?(:volumes)
       volumes = vm.volumes || []
@@ -302,7 +302,7 @@ class ComputeResource < ActiveRecord::Base
     opts = opts.dup #duplicate to prevent changing the origin opts.
     opts.delete("new_#{type}") || opts.delete("new_#{type}".to_sym) # delete template
     # convert our options hash into a sorted array (e.g. to preserve nic / disks order)
-    opts = opts.sort { |l, r| l[0].to_s.sub('new_','').to_i <=> r[0].to_s.sub('new_','').to_i }.map { |e| Hash[e[1]] }
+    opts = opts.sort { |l, r| l[0].to_s.sub('new_', '').to_i <=> r[0].to_s.sub('new_', '').to_i }.map { |e| Hash[e[1]] }
     opts.map do |v|
       if v[:"_delete"] == '1'  && v[:id].blank?
         nil

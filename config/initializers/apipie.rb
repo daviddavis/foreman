@@ -18,7 +18,7 @@ Apipie.configure do |config|
   substitutions = {
     :operatingsystem_families => Operatingsystem.families.join(", "),
     :providers => ComputeResource.providers.join(', '),
-    :default_nic_type => InterfaceTypeMapper::DEFAULT_TYPE.humanized_name.downcase,
+    :default_nic_type => InterfaceTypeMapper::DEFAULT_TYPE.humanized_name.downcase
   }
 
   config.translate = lambda do |str, loc|

@@ -28,7 +28,7 @@ module Menu
           menu.item :organizations,      :caption => N_('Organizations') if SETTINGS[:organizations_enabled]
           menu.divider
           if SETTINGS[:login]
-            menu.item :auth_source_ldaps,:caption => N_('LDAP authentication')
+            menu.item :auth_source_ldaps, :caption => N_('LDAP authentication')
             menu.item :users,            :caption => N_('Users')
             menu.item :usergroups,       :caption => N_('User groups')
             menu.item :roles,            :caption => N_('Roles')
@@ -62,7 +62,7 @@ module Menu
             menu.item :architectures,   :caption => N_('Architectures')
             menu.item :models,          :caption => N_('Hardware models')
             menu.item :media,           :caption => N_('Installation media')
-            menu.item :operatingsystems,:caption => N_('Operating systems')
+            menu.item :operatingsystems, :caption => N_('Operating systems')
             menu.divider                :caption => N_('Templates')
             menu.item :partition_tables, :caption => N_('Partition tables'),
                       :url_hash => { :controller => 'ptables', :action => 'index' }

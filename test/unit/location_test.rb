@@ -205,7 +205,7 @@ class LocationTest < ActiveSupport::TestCase
     # add subnet to location
     assert TaxableTaxonomy.create(:taxonomy_id => location.id, :taxable_id => subnets(:two).id, :taxable_type => "Subnet")
     # check that inherited_ids of location matches selected_ids of parent, except for subnet
-    location.selected_or_inherited_ids.each do |k,v|
+    location.selected_or_inherited_ids.each do |k, v|
       assert_equal v.uniq, parent.selected_ids[k].uniq unless k == 'subnet_ids'
       assert_equal v.uniq, ([subnets(:two).id] + parent.selected_ids[k].uniq) if k == 'subnet_ids'
     end
@@ -216,10 +216,10 @@ class LocationTest < ActiveSupport::TestCase
     subnet = FactoryGirl.create(:subnet, :organizations => [taxonomies(:organization1)])
     domain1 = FactoryGirl.create(:domain)
     domain2 = FactoryGirl.create(:domain)
-    parent.update_attribute(:domains,[domain1,domain2])
-    parent.update_attribute(:subnets,[subnet])
+    parent.update_attribute(:domains, [domain1, domain2])
+    parent.update_attribute(:subnets, [subnet])
     # we're no longer using the fixture dhcp/dns/tftp proxy to create the host, so remove them
-    parent.update_attribute(:smart_proxies,[smart_proxies(:puppetmaster),smart_proxies(:realm)])
+    parent.update_attribute(:smart_proxies, [smart_proxies(:puppetmaster), smart_proxies(:realm)])
 
     location = Location.create :name => "rack1", :parent_id => parent.id
     FactoryGirl.create(:host,
@@ -243,7 +243,7 @@ class LocationTest < ActiveSupport::TestCase
                        :template_kind    => TemplateKind.find_by_name('provision'))
 
     # check that inherited_ids of location matches selected_ids of parent
-    location.selected_or_inherited_ids.each do |k,v|
+    location.selected_or_inherited_ids.each do |k, v|
       assert_equal v.sort, parent.used_and_selected_ids[k].sort
     end
   end
@@ -252,7 +252,7 @@ class LocationTest < ActiveSupport::TestCase
     parent = taxonomies(:location1)
     location = Location.create :name => "rack1", :parent_id => parent.id
     # no hosts were assigned to location, so no missing ids need to be selected
-    location.need_to_be_selected_ids.each do |k,v|
+    location.need_to_be_selected_ids.each do |k, v|
       assert v.empty?
     end
   end

@@ -8,7 +8,7 @@ module HostsAndHostgroupsHelper
   end
 
   def accessible_hostgroups
-    Hostgroup.with_taxonomy_scope_override(@location,@organization).order(:title)
+    Hostgroup.with_taxonomy_scope_override(@location, @organization).order(:title)
   end
 
   def parent_classes(obj)
@@ -18,11 +18,11 @@ module HostsAndHostgroupsHelper
   end
 
   def accessible_domains
-    Domain.with_taxonomy_scope_override(@location,@organization).order(:name)
+    Domain.with_taxonomy_scope_override(@location, @organization).order(:name)
   end
 
   def accessible_subnets
-    Subnet.with_taxonomy_scope_override(@location,@organization).order(:name)
+    Subnet.with_taxonomy_scope_override(@location, @organization).order(:name)
   end
 
   def domain_subnets(domain = @domain)
@@ -38,7 +38,7 @@ module HostsAndHostgroupsHelper
 
   def os_media
     return [] if @operatingsystem.blank?
-    @operatingsystem.media.with_taxonomy_scope(@location,@organization,:path_ids)
+    @operatingsystem.media.with_taxonomy_scope(@location, @organization, :path_ids)
   end
 
   def os_ptable
@@ -55,7 +55,7 @@ module HostsAndHostgroupsHelper
   def puppet_ca(f, can_override, override)
     # Don't show this if we have no CA proxies, otherwise always include blank
     # so the user can choose not to sign the puppet cert on this host
-    proxies = SmartProxy.unscoped.with_features("Puppet CA").with_taxonomy_scope(@location,@organization,:path_ids)
+    proxies = SmartProxy.unscoped.with_features("Puppet CA").with_taxonomy_scope(@location, @organization, :path_ids)
     return if proxies.count == 0
     select_f f, :puppet_ca_proxy_id, proxies, :id, :name,
              { :include_blank => blank_or_inherit_f(f, :puppet_ca_proxy),
@@ -70,7 +70,7 @@ module HostsAndHostgroupsHelper
   def puppet_master(f, can_override, override)
     # Don't show this if we have no Puppet proxies, otherwise always include blank
     # so the user can choose not to use puppet on this host
-    proxies = SmartProxy.unscoped.with_features("Puppet").with_taxonomy_scope(@location,@organization,:path_ids)
+    proxies = SmartProxy.unscoped.with_features("Puppet").with_taxonomy_scope(@location, @organization, :path_ids)
     return if proxies.count == 0
     select_f f, :puppet_proxy_id, proxies, :id, :name,
              { :include_blank => blank_or_inherit_f(f, :puppet_proxy),

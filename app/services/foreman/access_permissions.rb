@@ -377,7 +377,7 @@ Foreman::AccessControl.map do |permission_set|
                                                :rebuild_config, :submit_rebuild_config],
                                     :tasks => tasks_ajax_actions,
                                     :"api/v2/tasks" => [:index],
-                                    :"api/v2/hosts" => [:rebuild_config],
+                                    :"api/v2/hosts" => [:rebuild_config]
                                      }
     map.permission :power_hosts,   {:hosts          => [:power],
                                     :"api/v2/hosts" => [:power] }
@@ -539,7 +539,7 @@ Foreman::AccessControl.map do |permission_set|
                                           :"api/v2/puppetclasses" => [:index, :show],
                                           :"api/v1/lookup_keys" => [:index, :show],
                                           :"api/v2/smart_variables" => [:index, :show],
-                                          :"api/v2/smart_class_parameters" => [:index, :show],
+                                          :"api/v2/smart_class_parameters" => [:index, :show]
                                         }
     map.permission :create_puppetclasses,  {:puppetclasses => [:new, :create],
                                           :"api/v1/puppetclasses" => [:create],

@@ -150,15 +150,15 @@ module Orchestration
       met = met.to_s
       case met
       when /set/
-        met.gsub!("set","del")
+        met.gsub!("set", "del")
       when /del/
-        met.gsub!("del","set")
+        met.gsub!("del", "set")
       else
         raise "Dont know how to rollback #{met}"
       end
       met = met.to_sym
     end
-    if obj.respond_to?(met,true)
+    if obj.respond_to?(met, true)
       return obj.send(met)
     else
       failure _("invalid method %s") % met

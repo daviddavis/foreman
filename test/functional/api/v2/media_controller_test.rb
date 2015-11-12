@@ -3,7 +3,7 @@ require 'test_helper'
 class Api::V2::MediaControllerTest < ActionController::TestCase
   new_medium = {
     :name => "new medium",
-    :path => "http://www.newmedium.com/",
+    :path => "http://www.newmedium.com/"
   }
 
   test "should get index" do

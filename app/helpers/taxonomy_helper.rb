@@ -48,11 +48,11 @@ module TaxonomyHelper
   end
 
   def wizard_header(current, *args)
-    content_tag(:ul,:class=>"wizard") do
+    content_tag(:ul, :class=>"wizard") do
       step=1
       content = nil
       args.each do |arg|
-        step_content = content_tag(:li,(content_tag(:span,step,:class=>"badge" +" #{'badge-inverse' if step==current}")+arg).html_safe, :class=>"#{'active' if step==current}")
+        step_content = content_tag(:li, (content_tag(:span, step, :class=>"badge" +" #{'badge-inverse' if step==current}")+arg).html_safe, :class=>"#{'active' if step==current}")
         step == 1 ? content = step_content : content += step_content
         step += 1
       end
@@ -180,7 +180,7 @@ module TaxonomyHelper
                :domains => { :all => _("All domains"), :select => _("Select domains") },
                :realms => { :all => _("All realms"), :select => _("Select realms") },
                :environments => { :all => _("All environments"), :select => _("Select environments") },
-               :hostgroups => { :all => _("All host groups"), :select => _("Select host groups") },
+               :hostgroups => { :all => _("All host groups"), :select => _("Select host groups") }
     }
     labels[resource][verb]
   end

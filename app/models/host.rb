@@ -12,7 +12,7 @@ module Host
       end
     end
 
-    type.constantize.send(method,*args, &block)
+    type.constantize.send(method, *args, &block)
   end
 
   # the API base controller expects to call 'respond_to?' on this, which

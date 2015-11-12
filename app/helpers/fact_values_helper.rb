@@ -30,7 +30,7 @@ module FactValuesHelper
     end.join(FactName::SEPARATOR).html_safe
 
     if value.compose
-      link_to(icon_text('plus-sign','', :title => _('Expand nested items')),
+      link_to(icon_text('plus-sign', '', :title => _('Expand nested items')),
               fact_values_path(:parent_fact => value_name)) + ' ' +
           content_tag(:span, name)
     else

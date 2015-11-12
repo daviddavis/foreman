@@ -267,7 +267,7 @@ module Foreman::Model
         'vmx-09' => '9 (ESXi 5.1)',
         'vmx-08' => '8 (ESXi 5.0)',
         'vmx-07' => '7 (ESX/ESXi 4.x)',
-        'vmx-04' => '4 (ESX/ESXi 3.5)',
+        'vmx-04' => '4 (ESX/ESXi 3.5)'
       }
     end
 
@@ -366,7 +366,7 @@ module Foreman::Model
         "numCPUs" => args[:cpus],
         "memoryMB" => args[:memory_mb],
         "datastore" => args[:volumes].first[:datastore],
-        "resource_pool" => [args[:cluster], args[:resource_pool]],
+        "resource_pool" => [args[:cluster], args[:resource_pool]]
       }
 
       vm_model = new_vm(raw_args)

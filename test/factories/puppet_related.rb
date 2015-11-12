@@ -77,7 +77,7 @@ FactoryGirl.define do
     transient do
       environments []
     end
-    after(:create) do |pc,evaluator|
+    after(:create) do |pc, evaluator|
       evaluator.environments.each do |env|
         FactoryGirl.create :environment_class, :puppetclass_id => pc.id, :environment_id => env.id unless env.nil?
       end
@@ -87,7 +87,7 @@ FactoryGirl.define do
       transient do
         parameter_count 1
       end
-      after(:create) do |pc,evaluator|
+      after(:create) do |pc, evaluator|
         evaluator.parameter_count.times do
           evaluator.environments.each do |env|
             lkey = FactoryGirl.create :puppetclass_lookup_key

@@ -29,7 +29,7 @@ class LookupKeyTest < ActiveSupport::TestCase
     end
 
     @host1.domain = domains(:mydomain)
-    assert_equal [value.match], key.send(:path2matches,@host1)
+    assert_equal [value.match], key.send(:path2matches, @host1)
   end
 
   def test_fetching_the_correct_value_to_a_given_key
@@ -59,7 +59,7 @@ class LookupKeyTest < ActiveSupport::TestCase
       value = LookupValue.create!(:value => "ntp.pool.org", :match => "hostgroup =  Common", :lookup_key => key)
     end
     @host1.hostgroup = hostgroups(:common)
-    assert_equal [value.match], key.send(:path2matches,@host1)
+    assert_equal [value.match], key.send(:path2matches, @host1)
   end
 
   def test_multiple_paths
@@ -84,9 +84,9 @@ class LookupKeyTest < ActiveSupport::TestCase
       LookupValue.create!(:value => "v22", :match => "fqdn=#{@host2.fqdn}", :lookup_key => key)
       EnvironmentClass.create!(:puppetclass => puppetclass, :environment => environments(:testing),
                                :puppetclass_lookup_key => key)
-      HostClass.create!(:host => @host1,:puppetclass=>puppetclass)
-      HostClass.create!(:host => @host2,:puppetclass=>puppetclass)
-      HostClass.create!(:host => @host3,:puppetclass=>puppetclass)
+      HostClass.create!(:host => @host1, :puppetclass=>puppetclass)
+      HostClass.create!(:host => @host2, :puppetclass=>puppetclass)
+      HostClass.create!(:host => @host3, :puppetclass=>puppetclass)
     end
 
     key.reload

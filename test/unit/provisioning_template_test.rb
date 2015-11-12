@@ -48,10 +48,10 @@ class ProvisioningTemplateTest < ActiveSupport::TestCase
     as_admin do
       assert tmplt.save
     end
-    assert_equal nil,tmplt.template_kind
-    assert_equal [],tmplt.hostgroups
-    assert_equal [],tmplt.environments
-    assert_equal [],tmplt.template_combinations
+    assert_equal nil, tmplt.template_kind
+    assert_equal [], tmplt.hostgroups
+    assert_equal [], tmplt.environments
+    assert_equal [], tmplt.template_combinations
   end
 
   # If the template is not a snippet is should require the specific declaration

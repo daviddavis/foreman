@@ -45,7 +45,7 @@ module Foreman::Controller::HostDetails
   def assign_parameter(name, root = "")
     taxonomy_scope
     Taxonomy.as_taxonomy @organization, @location do
-      instance_variable_set("@#{name}",name.classify.constantize.where(:id => params["#{name}_id"]).first)
+      instance_variable_set("@#{name}", name.classify.constantize.where(:id => params["#{name}_id"]).first)
       item = instance_variable_get("@#{controller_name.singularize}") || controller_name.classify.constantize.new(params[controller_name.singularize])
       render :partial => root + name, :locals => { :item => item }
     end

@@ -7,7 +7,7 @@ class HostConfigGroupTest < ActiveSupport::TestCase
         puppetclasses(:five),
         puppetclasses(:six),
         puppetclasses(:seven),
-        puppetclasses(:eight),
+        puppetclasses(:eight)
       ])
     ])
     assert_equal 4, host.group_puppetclasses.count
@@ -17,7 +17,7 @@ class HostConfigGroupTest < ActiveSupport::TestCase
   test 'relationship host.config_groups ' do
     c1 = FactoryGirl.create(:config_group)
     c2 = FactoryGirl.create(:config_group)
-    host = FactoryGirl.create(:host, :config_groups => [c1,c2])
+    host = FactoryGirl.create(:host, :config_groups => [c1, c2])
     assert_equal 2, host.config_groups.count
     assert_equal [c1.name, c2.name].sort, host.config_groups.pluck(:name).sort
   end
@@ -31,7 +31,7 @@ class HostConfigGroupTest < ActiveSupport::TestCase
   test 'relationship hostgroup.config_groups' do
     hostgroup = hostgroups(:common)
     assert_equal 2, hostgroup.config_groups.count
-    assert_equal ['Monitoring','Tools'].sort, hostgroup.config_groups.pluck(:name).sort
+    assert_equal ['Monitoring', 'Tools'].sort, hostgroup.config_groups.pluck(:name).sort
   end
 
   context "host and hostgroup both have id=1" do

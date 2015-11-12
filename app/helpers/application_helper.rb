@@ -227,9 +227,9 @@ module ApplicationHelper
   end
 
   def flot_pie_chart(name, title, data, options = {})
-    data = data.map { |k,v| {:label=>k.to_s.humanize, :data=>v} } if  data.is_a?(Hash)
-    data.map{|element| element[:label] = truncate(element[:label],:length => 16)}
-    header = content_tag(:h4,(options[:show_title]) ? title : '', :class=>'ca pie-title', :'data-original-title'=>_("Expand the chart"), :rel=>'twipsy')
+    data = data.map { |k, v| {:label=>k.to_s.humanize, :data=>v} } if  data.is_a?(Hash)
+    data.map{|element| element[:label] = truncate(element[:label], :length => 16)}
+    header = content_tag(:h4, (options[:show_title]) ? title : '', :class=>'ca pie-title', :'data-original-title'=>_("Expand the chart"), :rel=>'twipsy')
     link_to_function(header, "expand_chart(this)")+
         content_tag(:div, nil,
                     { :id    => name,
@@ -243,7 +243,7 @@ module ApplicationHelper
   end
 
   def flot_chart(name, xaxis_label, yaxis_label, data, options = {})
-    data = data.map { |k,v| {:label=>k.to_s.humanize, :data=>v} } if  data.is_a?(Hash)
+    data = data.map { |k, v| {:label=>k.to_s.humanize, :data=>v} } if  data.is_a?(Hash)
     content_tag(:div, nil,
                 { :id    => name,
                   :class => 'statistics-chart',
@@ -262,14 +262,14 @@ module ApplicationHelper
     if data.is_a?(Array)
       data = data.map do |kv|
         ticks ||=[]
-        ticks << [i+=1,kv[0].to_s.humanize ]
-        [i,kv[1]]
+        ticks << [i+=1, kv[0].to_s.humanize ]
+        [i, kv[1]]
       end
     elsif  data.is_a?(Hash)
-      data = data.map do |k,v|
+      data = data.map do |k, v|
         ticks ||=[]
-        ticks << [i+=1,k.to_s.humanize ]
-        [i,v]
+        ticks << [i+=1, k.to_s.humanize ]
+        [i, v]
       end
     end
 
@@ -299,9 +299,9 @@ module ApplicationHelper
 
     #multiple options
     content_tag(:div, options.merge(:class=>'btn-group')) do
-      link_to((title +" " +content_tag(:i, '', :class=>'caret')).html_safe,'#', :class=>"btn btn-default dropdown-toggle", :'data-toggle'=>'dropdown') +
-          content_tag(:ul,:class=>"dropdown-menu pull-right") do
-            args.map{|option| content_tag(:li,option)}.join(" ").html_safe
+      link_to((title +" " +content_tag(:i, '', :class=>'caret')).html_safe, '#', :class=>"btn btn-default dropdown-toggle", :'data-toggle'=>'dropdown') +
+          content_tag(:ul, :class=>"dropdown-menu pull-right") do
+            args.map{|option| content_tag(:li, option)}.join(" ").html_safe
           end
     end
   end
@@ -319,10 +319,10 @@ module ApplicationHelper
     primary =  args.delete_at(0).html_safe
     primary = content_tag(:span, primary, :class=>'btn btn-sm btn-default') if primary !~ /btn/
 
-    content_tag(:div,:class => "btn-group") do
-      primary + link_to(content_tag(:i, '', :class=>'caret'),'#', :class=>"btn btn-default #{'btn-sm' if primary =~ /btn-sm/} dropdown-toggle", :'data-toggle'=>'dropdown') +
-      content_tag(:ul,:class=>"dropdown-menu pull-right") do
-        args.map{|option| content_tag(:li,option)}.join(" ").html_safe
+    content_tag(:div, :class => "btn-group") do
+      primary + link_to(content_tag(:i, '', :class=>'caret'), '#', :class=>"btn btn-default #{'btn-sm' if primary =~ /btn-sm/} dropdown-toggle", :'data-toggle'=>'dropdown') +
+      content_tag(:ul, :class=>"dropdown-menu pull-right") do
+        args.map{|option| content_tag(:li, option)}.join(" ").html_safe
       end
     end
   end
@@ -372,7 +372,7 @@ module ApplicationHelper
     obj.class.model_name.to_s.tableize.singularize
   end
 
-  def class_in_environment?(environment,puppetclass)
+  def class_in_environment?(environment, puppetclass)
     return false unless environment
     environment.puppetclasses.map(&:id).include?(puppetclass.id)
   end

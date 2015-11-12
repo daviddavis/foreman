@@ -34,7 +34,7 @@ module Classification
     end
 
     def values_hash(options = {})
-      values = Hash.new { |h,k| h[k] = {} }
+      values = Hash.new { |h, k| h[k] = {} }
       all_lookup_values = LookupValue.where(:match => path2matches).where(:lookup_key_id => class_parameters).includes(:lookup_key).to_a
       class_parameters.each do |key|
         lookup_values_for_key = all_lookup_values.select{|i| i.lookup_key_id == key.id}

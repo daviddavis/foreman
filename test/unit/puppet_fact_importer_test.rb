@@ -6,9 +6,9 @@ class PuppetFactImporterTest < ActiveSupport::TestCase
     disable_orchestration
     User.current = users :admin
     @host        = FactoryGirl.create(:host)
-    FactoryGirl.create(:fact_value, :value => '2.6.9',:host => @host,
+    FactoryGirl.create(:fact_value, :value => '2.6.9', :host => @host,
                        :fact_name => FactoryGirl.create(:fact_name, :name => 'kernelversion'))
-    FactoryGirl.create(:fact_value, :value => '10.0.19.33',:host => @host,
+    FactoryGirl.create(:fact_value, :value => '10.0.19.33', :host => @host,
                        :fact_name => FactoryGirl.create(:fact_name, :name => 'ipaddress'))
   end
 
@@ -76,7 +76,7 @@ class PuppetFactImporterTest < ActiveSupport::TestCase
 
   test "importer retains 'other' facts" do
     assert_equal '2.6.9', value('kernelversion')
-    FactoryGirl.create(:fact_value, :value => 'othervalue',:host => @host,
+    FactoryGirl.create(:fact_value, :value => 'othervalue', :host => @host,
                        :fact_name => FactoryGirl.create(:fact_name_other, :name => 'otherfact'))
     import('ipaddress' => '10.0.19.5', 'uptime' => '1 picosecond')
     assert_equal 'othervalue', value('otherfact')

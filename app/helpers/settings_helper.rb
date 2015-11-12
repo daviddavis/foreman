@@ -10,7 +10,7 @@ module SettingsHelper
     when "boolean"
       edit_select(setting, :value, {:select_values => {:true => "true", :false => "false"}.to_json } )
     else
-      edit_textfield(setting, :value,{:helper => :show_value})
+      edit_textfield(setting, :value, {:helper => :show_value})
     end
   end
 
@@ -26,7 +26,7 @@ module SettingsHelper
   end
 
   def short_cat(category)
-    category.gsub(/Setting::/,'')
+    category.gsub(/Setting::/, '')
   end
 
   def translate_full_name(setting)

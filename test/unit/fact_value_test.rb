@@ -40,7 +40,7 @@ class FactValueTest < ActiveSupport::TestCase
   end
 
   test "should return search results if search free text is fact name" do
-    FactoryGirl.create(:fact_value, :value => '2.6.9',:host => FactoryGirl.create(:host),
+    FactoryGirl.create(:fact_value, :value => '2.6.9', :host => FactoryGirl.create(:host),
                        :fact_name => FactoryGirl.create(:fact_name, :name => 'kernelversion'))
     results = FactValue.search_for('kernelversion')
     assert_equal 1, results.count
@@ -48,7 +48,7 @@ class FactValueTest < ActiveSupport::TestCase
   end
 
   test "should return search results for name = fact name" do
-    FactoryGirl.create(:fact_value, :value => '2.6.9',:host => FactoryGirl.create(:host),
+    FactoryGirl.create(:fact_value, :value => '2.6.9', :host => FactoryGirl.create(:host),
                        :fact_name => FactoryGirl.create(:fact_name, :name => 'kernelversion'))
     results = FactValue.search_for('name = kernelversion')
     assert_equal 1, results.count
@@ -57,7 +57,7 @@ class FactValueTest < ActiveSupport::TestCase
 
   test 'should return search results for host = fqdn' do
     host = FactoryGirl.create(:host)
-    FactoryGirl.create(:fact_value, :value => '2.6.9',:host => host,
+    FactoryGirl.create(:fact_value, :value => '2.6.9', :host => host,
                        :fact_name => FactoryGirl.create(:fact_name, :name => 'kernelversion'))
     results = FactValue.search_for("host = #{host.fqdn}")
     refute_empty results
@@ -71,7 +71,7 @@ class FactValueTest < ActiveSupport::TestCase
 
   test 'numeric searches should use numeric comparsion' do
     host = FactoryGirl.create(:host)
-    FactoryGirl.create(:fact_value, :value => '64498',:host => host,
+    FactoryGirl.create(:fact_value, :value => '64498', :host => host,
                        :fact_name => FactoryGirl.create(:fact_name, :name => 'memory_mb'))
     results = FactValue.search_for("facts.memory_mb > 112889")
     assert_empty results

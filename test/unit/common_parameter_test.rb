@@ -14,7 +14,7 @@ class CommonParameterTest < ActiveSupport::TestCase
     parameter = CommonParameter.new :name => "   a new     param    ", :value => "some_value"
     assert !parameter.save
 
-    parameter.name.gsub!(/\s+/,'_')
+    parameter.name.gsub!(/\s+/, '_')
     assert parameter.save
   end
 

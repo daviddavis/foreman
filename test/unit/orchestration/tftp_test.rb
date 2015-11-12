@@ -38,7 +38,7 @@ class TFTPOrchestrationTest < ActiveSupport::TestCase
 
       template = h.send(:generate_pxe_template).split("~")
       expected = File.open(Pathname.new(__FILE__).parent + "pxe_template").readlines.map(&:strip)
-      assert_equal template,expected
+      assert_equal template, expected
       assert h.build
     end
   end
@@ -51,7 +51,7 @@ class TFTPOrchestrationTest < ActiveSupport::TestCase
 
       template = h.send(:generate_pxe_template).split("~")
       expected = File.open(Pathname.new(__FILE__).parent + "pxe_local_template").readlines.map(&:strip)
-      assert_equal template,expected
+      assert_equal template, expected
     end
   end
 

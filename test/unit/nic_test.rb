@@ -75,7 +75,7 @@ class NicTest < ActiveSupport::TestCase
 
       subnet_list = subnet.send("#{taxonomy.to_s.pluralize}")
       subnet_list << tax_object1
-      host.send("#{taxonomy}=",tax_object2)
+      host.send("#{taxonomy}=", tax_object2)
 
       i = Nic::Base.new :mac => "cabbccddeeff", :host => host
       i.subnet = subnet

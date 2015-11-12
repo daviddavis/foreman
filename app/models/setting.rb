@@ -33,10 +33,10 @@ class Setting < ActiveRecord::Base
   validates :name, :presence => true, :uniqueness => true
   validates :description, :presence => true
   validates :default, :presence => true, :unless => Proc.new {|s| s.settings_type == "boolean" || BLANK_ATTRS.include?(s.name) }
-  validates :default, :inclusion => {:in => [true,false]}, :if => Proc.new {|s| s.settings_type == "boolean"}
+  validates :default, :inclusion => {:in => [true, false]}, :if => Proc.new {|s| s.settings_type == "boolean"}
   validates :value, :numericality => true, :length => {:maximum => 8}, :if => Proc.new {|s| s.settings_type == "integer"}
   validates :value, :numericality => {:greater_than => 0}, :if => Proc.new {|s| NONZERO_ATTRS.include?(s.name) }
-  validates :value, :inclusion => {:in => [true,false]}, :if => Proc.new {|s| s.settings_type == "boolean"}
+  validates :value, :inclusion => {:in => [true, false]}, :if => Proc.new {|s| s.settings_type == "boolean"}
   validates :value, :presence => true, :if => Proc.new {|s| s.settings_type == "array" && !BLANK_ATTRS.include?(s.name) }
   validates :settings_type, :inclusion => {:in => TYPES}, :allow_nil => true, :allow_blank => true
   validates :value, :uri => true, :presence => true, :if => Proc.new {|s| URI_ATTRS.include?(s.name) }
@@ -188,7 +188,7 @@ class Setting < ActiveRecord::Base
   def self.create_existing(s, opts)
     bypass_readonly(s) do
       attrs = column_check([:default, :description, :full_name])
-      to_update = Hash[opts.select { |k,v| attrs.include? k }]
+      to_update = Hash[opts.select { |k, v| attrs.include? k }]
       to_update.merge!(:value => SETTINGS[opts[:name].to_sym]) if SETTINGS.key?(opts[:name].to_sym)
       s.update_attributes(to_update)
       s.update_column :category, opts[:category] if s.category != opts[:category]
@@ -225,7 +225,7 @@ class Setting < ActiveRecord::Base
 
   def validate_frozen_attributes
     return true if new_record?
-    changed_attributes.each do |c,old|
+    changed_attributes.each do |c, old|
       # Allow settings_type to change at first (from nil) since it gets populated during validation
       if FROZEN_ATTRS.include?(c.to_s) || (c.to_s == :settings_type && !old.nil?)
         errors.add(c, _("is not allowed to change"))

@@ -200,7 +200,7 @@ Spork.prefork do
     def refute_with_errors(condition, model, field = nil, match = nil)
       refute condition, "#{model.inspect} errors: #{model.errors.full_messages.join(';')}"
       if field
-        model_errors = model.errors.map { |a,m| model.errors.full_message(a, m) unless field == a }.compact
+        model_errors = model.errors.map { |a, m| model.errors.full_message(a, m) unless field == a }.compact
         assert model_errors.blank?, "#{model} contains #{model_errors}, it should not contain any"
         assert model.errors[field].find { |e| e.match(match) }.present?,
                        "#{field} error matching #{match} not found: #{model.errors[field].inspect}" if match
@@ -225,7 +225,7 @@ Spork.prefork do
     end
 
     def next_mac(mac)
-      mac.tr(':','').to_i(16).succ.to_s(16).rjust(12, '0').scan(/../).join(':')
+      mac.tr(':', '').to_i(16).succ.to_s(16).rjust(12, '0').scan(/../).join(':')
     end
   end
 
@@ -241,7 +241,7 @@ Spork.prefork do
     # Stop ActiveRecord from wrapping tests in transactions
     self.use_transactional_fixtures = false
 
-    def assert_index_page(index_path,title_text,new_link_text = nil,has_search = true,has_pagination = true)
+    def assert_index_page(index_path, title_text, new_link_text = nil, has_search = true, has_pagination = true)
       visit index_path
       assert page.has_selector?('h1', :text => title_text), "#{title_text} was expected in the <h1> tag, but was not found"
       (assert find_link(new_link_text).visible?, "#{new_link_text} is not visible") if new_link_text
@@ -249,13 +249,13 @@ Spork.prefork do
       (assert has_content?("Displaying"), "Pagination 'Display ...' does not appear") if has_pagination
     end
 
-    def assert_new_button(index_path,new_link_text,new_path)
+    def assert_new_button(index_path, new_link_text, new_path)
       visit index_path
       click_link new_link_text
       assert_equal new_path, current_path, "new path #{new_path} was expected but it was #{current_path}"
     end
 
-    def assert_submit_button(redirect_path,button_text = "Submit")
+    def assert_submit_button(redirect_path, button_text = "Submit")
       click_button button_text
       assert_equal redirect_path, current_path, "redirect path #{redirect_path} was expected but it was #{current_path}"
     end

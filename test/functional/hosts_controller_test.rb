@@ -398,7 +398,7 @@ class HostsControllerTest < ActionController::TestCase
     @host1.host_parameters = [HostParameter.create(:name => "p1", :value => "yo")]
     @host2.host_parameters = [HostParameter.create(:name => "p1", :value => "hi")]
     post :update_multiple_parameters,
-      {:name => { "p1" => "hello"},:host_ids => [@host1.id, @host2.id]},
+      {:name => { "p1" => "hello"}, :host_ids => [@host1.id, @host2.id]},
       set_session_user.merge(:user => users(:admin).id)
     assert Host.find(@host1.id).host_parameters[0][:value] == "hello"
     assert Host.find(@host2.id).host_parameters[0][:value] == "hello"

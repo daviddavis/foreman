@@ -47,7 +47,7 @@ class AuthSource < ActiveRecord::Base
       return nil
     end
 
-    kind = type_before_type_cast.sub("AuthSource","")
+    kind = type_before_type_cast.sub("AuthSource", "")
     "#{kind.upcase}-#{name}" if name
   end
 

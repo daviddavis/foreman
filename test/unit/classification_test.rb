@@ -699,7 +699,7 @@ class ClassificationTest < ActiveSupport::TestCase
                              :override => true, :key_type => 'array', :merge_overrides => false,
                              :default_value => '<%= [1,2] %>', :path => "organization\nos\nlocation",
                              :puppetclass => puppetclasses(:one))
-    assert_equal [1,2], classification.enc['base'][key.key]
+    assert_equal [1, 2], classification.enc['base'][key.key]
 
     as_admin do
       LookupValue.create! :lookup_key_id => key.id,
@@ -728,7 +728,7 @@ class ClassificationTest < ActiveSupport::TestCase
                                          :element_name => 'Organization 1',
                                          :managed => false}}},
                                          classification.send(:values_hash))
-    assert_equal [3,4], classification.enc['base'][key.key]
+    assert_equal [3, 4], classification.enc['base'][key.key]
   end
 
   test 'enc should return correct values for multi-key matchers' do

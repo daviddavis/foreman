@@ -72,7 +72,7 @@ class SubnetTest < ActiveSupport::TestCase
   end
 
   test "should find the subnet by ip" do
-    @subnet = Subnet.new(:network => "123.123.123.1",:mask => "255.255.255.0",:name => "valid")
+    @subnet = Subnet.new(:network => "123.123.123.1", :mask => "255.255.255.0", :name => "valid")
     assert @subnet.save
     assert @subnet.domain_ids = [domains(:mydomain).id]
     assert_equal @subnet, Subnet.subnet_for("123.123.123.1")
@@ -86,7 +86,7 @@ class SubnetTest < ActiveSupport::TestCase
 
   def create_a_domain_with_the_subnet
     @domain = Domain.where(:name => "domain").first_or_create
-    @subnet = Subnet.new(:network => "123.123.123.1",:mask => "255.255.255.0",:name => "valid")
+    @subnet = Subnet.new(:network => "123.123.123.1", :mask => "255.255.255.0", :name => "valid")
     assert @subnet.save
     assert @subnet.domain_ids = [domains(:mydomain).id]
     @subnet.save!

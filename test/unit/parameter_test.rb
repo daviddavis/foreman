@@ -44,7 +44,7 @@ class ParameterTest < ActiveSupport::TestCase
     host.clear_host_parameters_cache!
     assert_equal "dog", host.host_params["animal"]
 
-    hostgroup.group_parameters << GroupParameter.create(:name => "animal",:value => "cow")
+    hostgroup.group_parameters << GroupParameter.create(:name => "animal", :value => "cow")
     host.clear_host_parameters_cache!
     assert_equal "cow", host.host_params["animal"]
 

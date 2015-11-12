@@ -160,7 +160,7 @@ permissions = [
   ['User', 'view_users'],
   ['User', 'create_users'],
   ['User', 'edit_users'],
-  ['User', 'destroy_users'],
+  ['User', 'destroy_users']
 ]
 permissions.each do |resource, permission|
   Permission.where(:name => permission, :resource_type => resource).first_or_create

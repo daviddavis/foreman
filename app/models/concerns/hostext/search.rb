@@ -50,7 +50,7 @@ module Hostext
       scoped_search :in => :operatingsystem, :on => :title,       :complete_value => true, :rename => :os_title
       scoped_search :in => :operatingsystem, :on => :major,       :complete_value => true, :rename => :os_major
       scoped_search :in => :operatingsystem, :on => :minor,       :complete_value => true, :rename => :os_minor
-      scoped_search :in => :operatingsystem, :on => :id,          :complete_enabled => false,:rename => :os_id, :only_explicit => true
+      scoped_search :in => :operatingsystem, :on => :id,          :complete_enabled => false, :rename => :os_id, :only_explicit => true
 
       scoped_search :in => :primary_interface, :on => :ip, :complete_value => true
       scoped_search :in => :interfaces, :on => :ip, :complete_value => true, :rename => :has_ip
@@ -83,12 +83,12 @@ module Hostext
         scoped_search :in => :operatingsystem, :on => :title,       :complete_value => true, :rename => :os_title
         scoped_search :in => :operatingsystem, :on => :major,       :complete_value => true, :rename => :os_major
         scoped_search :in => :operatingsystem, :on => :minor,       :complete_value => true, :rename => :os_minor
-        scoped_search :in => :operatingsystem, :on => :id,          :complete_value => false,:rename => :os_id, :complete_enabled => false
+        scoped_search :in => :operatingsystem, :on => :id,          :complete_value => false, :rename => :os_id, :complete_enabled => false
       end
 
       if SETTINGS[:login]
         scoped_search :in => :search_users, :on => :login,     :complete_value => true, :only_explicit => true, :rename => :'user.login',    :operators => ['= ', '~ '], :ext_method => :search_by_user, :alias => :owner
-        scoped_search :in => :search_users, :on => :firstname, :complete_value => true, :only_explicit => true, :rename => :'user.firstname',:operators => ['= ', '~ '], :ext_method => :search_by_user
+        scoped_search :in => :search_users, :on => :firstname, :complete_value => true, :only_explicit => true, :rename => :'user.firstname', :operators => ['= ', '~ '], :ext_method => :search_by_user
         scoped_search :in => :search_users, :on => :lastname,  :complete_value => true, :only_explicit => true, :rename => :'user.lastname', :operators => ['= ', '~ '], :ext_method => :search_by_user
         scoped_search :in => :search_users, :on => :mail,      :complete_value => true, :only_explicit => true, :rename => :'user.mail',     :operators => ['= ', '~ '], :ext_method => :search_by_user
       end
@@ -96,7 +96,7 @@ module Hostext
 
     module ClassMethods
       def search_by_user(key, operator, value)
-        clean_key = key.sub(/^.*\./,'')
+        clean_key = key.sub(/^.*\./, '')
         if value == "current_user"
           value = User.current.id
           clean_key = "id"
@@ -143,14 +143,14 @@ module Hostext
       end
 
       def search_by_params(key, operator, value)
-        key_name = key.sub(/^.*\./,'')
+        key_name = key.sub(/^.*\./, '')
         condition = sanitize_sql_for_conditions(["name = ? and value #{operator} ?", key_name, value_to_sql(operator, value)])
         opts     = {:conditions => condition, :order => :priority}
         p        = Parameter.all(opts)
         return {:conditions => '1 = 0'} if p.blank?
 
         max         = p.first.priority
-        condition   = sanitize_sql_for_conditions(["name = ? and NOT(value #{operator} ?) and priority > ?",key_name,value_to_sql(operator, value), max])
+        condition   = sanitize_sql_for_conditions(["name = ? and NOT(value #{operator} ?) and priority > ?", key_name, value_to_sql(operator, value), max])
         negate_opts = {:conditions => condition, :order => :priority}
         n           = Parameter.all(negate_opts)
 
@@ -177,8 +177,8 @@ module Hostext
 
       def search_cast_facts(key, operator, value)
         {
-          :conditions => "fact_names.name = '#{key.split('.')[1]}' AND #{cast_facts(key,operator,value)}",
-          :include    => :fact_names,
+          :conditions => "fact_names.name = '#{key.split('.')[1]}' AND #{cast_facts(key, operator, value)}",
+          :include    => :fact_names
         }
       end
 

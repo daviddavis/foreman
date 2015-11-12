@@ -31,7 +31,7 @@ class NXOS < Operatingsystem
 
   # where to create the boot file on the TFTP server
   def boot_filename(host = nil)
-    "poap.cfg/"+host.mac.gsub(/:/,"").upcase
+    "poap.cfg/"+host.mac.gsub(/:/, "").upcase
   end
 
   def kernel(arch)
